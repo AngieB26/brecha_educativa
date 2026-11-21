@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Artículo de investigación sobre la brecha educativa entre las zonas urbanas y rurales del Perú, 2004–2025, basado en ENAHO–INEI." name="description"/>
+<title>La educación que nos separa | Investigación</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root{
+ --ink:#202124;--muted:#687078;--paper:#fbfaf8;--surface:#ffffff;--line:#e8e4df;
+ --wine:#7a1f2b;--wine-dark:#54151e;--blue:#326b9a;--orange:#d96d3d;--green:#47745a;
+ --serif:Georgia,"Times New Roman",serif;
+ --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.topbar{height:68px;border-bottom:1px solid rgba(32,33,36,.08);display:flex;align-items:center;justify-content:flex-end;padding:0 max(6vw,24px);background:rgba(251,250,248,.9);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px)}
+.topnav{display:flex;gap:30px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#555d64}
+.topnav a{text-decoration:none;padding:24px 0;position:relative;transition:color .2s}
+.topnav a:after{content:"";height:2px;position:absolute;bottom:15px;left:0;right:100%;background:var(--wine);transition:right .2s}
+.topnav a:hover{color:var(--wine)}.topnav a:hover:after{right:0}
+.hero-grid{max-width:1320px;margin:38px auto 0;padding:0 30px;display:grid;grid-template-columns:.92fr 1.08fr;align-items:stretch;gap:34px}
+.hero{padding:52px 10px 48px 18px;display:flex;flex-direction:column;justify-content:center}
+.kicker{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);display:flex;align-items:center;gap:12px}
+.kicker:after{content:"";height:1px;width:42px;background:var(--wine);opacity:.7}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08}
+h1{font-size:clamp(44px,5.4vw,76px);letter-spacing:-.05em;max-width:700px;margin:22px 0 20px}
+.dek{font-family:var(--serif);font-size:clamp(19px,2vw,24px);line-height:1.48;color:#5e6469;max-width:590px;margin:0 0 28px}
+.meta{display:flex;gap:10px 18px;flex-wrap:wrap;font-size:10px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:18px;border-top:1px solid var(--line);max-width:590px}
+ .byline{max-width:590px;margin-top:17px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:5px 13px;color:#596168;font-size:10px;line-height:1.55}.byline-label{width:100%;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--wine)}
+.hero-image{min-width:0;padding:0;display:flex;flex-direction:column;justify-content:center}
+.image-placeholder{min-height:490px;height:100%;border-radius:5px 54px 5px 5px;background:url('portada_brecha_educativa.png') center 48%/cover;position:relative;box-shadow:none;}
+.image-caption{font-size:10px;color:var(--muted);padding:10px 3px 0;letter-spacing:.02em}
+.article-wrap{max-width:1240px;margin:0 auto;padding:76px 30px 110px;display:grid;grid-template-columns:190px minmax(0,760px);justify-content:center;gap:72px}
+.toc{position:sticky;top:96px;align-self:start;border-top:2px solid var(--wine);padding-top:15px}
+.toc strong{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine)}
+.toc a{display:block;text-decoration:none;font-size:11px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line);line-height:1.4;transition:color .2s,padding .2s}
+.toc a:hover{color:var(--wine);padding-left:4px}
+article{min-width:0}
+article p{font-family:var(--serif);font-size:18px;line-height:1.85;color:#34383b;margin:0 0 23px}
+article p.lead:first-letter{float:left;font-family:var(--serif);font-size:68px;line-height:.8;padding:8px 10px 0 0;color:var(--wine)}
+h2{font-size:clamp(32px,4vw,46px);letter-spacing:-.035em;margin:76px 0 22px;position:relative}
+h2:after{content:"";display:block;width:42px;height:3px;background:var(--wine);margin-top:17px;border-radius:4px}
+h3{font-size:25px;margin:38px 0 14px;letter-spacing:-.02em}
+.rule{height:1px;background:var(--line);margin:48px 0}
+.pullquote{border-left:3px solid var(--wine);padding:8px 0 8px 25px;margin:44px 0;font-family:var(--serif);font-size:clamp(24px,3vw,31px);line-height:1.35;color:var(--wine-dark)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:34px 0}
+.stat{padding:25px 25px 22px;background:#fff;border:1px solid #e7e4df;border-radius:2px;border-top:3px solid var(--blue);box-shadow:none;}
+.stat.rural{border-top-color:var(--orange)}
+.stat .num{font-family:var(--serif);font-size:clamp(42px,5vw,58px);line-height:1.1;letter-spacing:-.05em}
+.stat .label{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+.stat small{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.chart-card{margin:38px 0 24px;padding:22px 22px 14px;border:1px solid #e9e6e1;border-radius:8px 26px 8px 8px;background:var(--surface);box-shadow:none;overflow:hidden}
+.chart-title{font-family:var(--serif);font-size:25px;letter-spacing:-.02em;margin:0 0 4px}
+.chart-sub{font-size:11px;color:var(--muted);margin-bottom:10px}
+.chart{width:100%;height:390px}
+.note{font-size:11px!important;line-height:1.6!important;color:var(--muted)!important;font-family:var(--sans)!important;margin-top:9px!important}
+.finding-list{padding:0;list-style:none;margin:26px 0}
+.finding-list li{padding:14px 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:18px}
+.finding-list b{font-family:var(--sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--wine);display:block;margin-bottom:4px}
+.method{background:#f0eeea;padding:28px 30px;margin-top:30px;border-radius:4px 22px 4px 4px;border-left:3px solid var(--wine)}
+.method p{font-size:13px;line-height:1.75;font-family:var(--sans);margin:0 0 12px}
+footer{background:#202124;color:#f5f3ef;padding:48px max(6vw,24px);font-size:11px}
+footer .foot-inner{max-width:1160px;margin:auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer p{max-width:650px;color:#c6c8ca}
+.chart-note{margin:10px 2px 2px;padding:0;color:#626970;font-size:12px;line-height:1.6;font-family:var(--sans)}
+.prediction-divider{margin:76px 0 34px;padding:34px 0 28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.prediction-divider .prediction-kicker{margin:0 0 12px;color:var(--wine);font-family:var(--sans);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.prediction-divider h2{margin:0 0 14px;max-width:720px;font-size:clamp(30px,3.8vw,43px)}
+.prediction-divider h2:after{display:none}
+.prediction-divider p:last-child{max-width:700px;margin:0;color:var(--muted);font-family:var(--serif);font-size:18px;line-height:1.65}
+
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:12px;margin-top:20px}.hero{padding:42px 12px 20px}.image-placeholder{min-height:360px}.article-wrap{grid-template-columns:1fr;gap:26px;padding-top:48px}.toc{position:static;display:flex;gap:14px;overflow:auto;white-space:nowrap;border-bottom:1px solid var(--line);padding-bottom:8px}.toc strong{display:none}.toc a{border:0}.toc a:hover{padding-left:0}}
+@media(max-width:560px){.topbar{height:58px;justify-content:center;padding:0 16px}.topnav{gap:17px;font-size:9px}.topnav a{padding:20px 0}.topnav a:after{bottom:10px}.hero-grid{padding:0 18px}.hero{padding:36px 2px 14px}h1{font-size:45px}.image-placeholder{min-height:250px;border-radius:4px 30px 4px 4px}.article-wrap{padding:42px 20px 72px}.stats{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:17px 13px}.stat .num{font-size:39px}.chart-card{padding:15px 12px 10px;margin:28px 0 20px}.chart-title{font-size:21px}.chart{height:330px}article p{font-size:17px}.method{padding:21px 18px}}
+.hook{font-family:var(--serif);font-size:clamp(24px,3vw,32px);line-height:1.35;color:var(--wine-dark);border-left:3px solid var(--wine);padding:6px 0 6px 22px;margin:0 0 34px}
+</style>
+</head>
+<body>
+<header class="topbar">
+
+<nav class="topnav"><a href="#cifras">Hallazgos</a><a href="#territorio">Territorio</a><a href="#graficos-originales">Gráficos</a><a href="#modelo">Modelo</a><a href="#metodologia">Método y límites</a></nav>
+</header>
+<div class="hero-grid">
+<section class="hero">
+<div class="kicker">Investigación · Educación · Perú</div>
+<h1>La educación que nos separa: dos décadas de brecha entre la ciudad y el campo</h1>
+<p class="dek">El acceso a la escuela ha mejorado, pero terminar la secundaria y continuar estudios superiores todavía depende, en buena medida, del lugar donde se vive.</p>
+<div class="meta"><span>ENAHO – INEI</span><span>Periodo analizado: 2004–2025</span><span>Artículo basado en análisis de datos</span></div>
+<div class="byline"><span class="byline-label">Autores</span><span>Angelina Sharely Barrientos Quispe</span><span>Chiara Gabriela Cuyan Matos</span><span>Leonardo Melendez Alvarez</span><span>Daniel Romero Flores</span><span>César Augusto Tapia Sotomayor</span></div>
+</section>
+<div class="hero-image">
+<div aria-label="Fotografía ilustrativa de un aula escolar" class="image-placeholder" role="img"></div>
+<div class="image-caption">Una escena que representa los desafíos de aprender en contextos rurales del país. Imagen ilustrativa.</div>
+</div>
+</div>
+<div class="article-wrap">
+<aside class="toc">
+<strong>En este artículo</strong>
+<a href="#problema">El problema</a><a href="#datos">Los datos</a><a href="#cifras">La distancia en cifras</a><a href="#evolucion">Veinte años de cambios</a><a href="#territorio">El peso del territorio</a><a href="#desigualdades">Otras desigualdades</a><a href="#graficos-originales">Explora los datos</a><a href="#modelo">Cómo funciona el modelo</a><a href="#graficos-modelo">Qué muestra el modelo</a><a href="#conclusion">Conclusiones</a><a href="#metodologia">Metodología</a></aside>
+<article>
+<section id="problema">
+<p class="hook">¿Sabías que en el campo peruano solo 1 de cada 4 adultos terminó la secundaria, frente a 2 de cada 3 en la ciudad?</p>
+<p class="lead">En el Perú, dos personas pueden crecer en el mismo país y, aun así, enfrentar oportunidades educativas muy distintas. La distancia entre una localidad urbana y una comunidad rural no se expresa únicamente en kilómetros: también aparece en los años de estudio alcanzados, en la posibilidad de completar la secundaria y en el acceso a la educación superior.</p>
+<p>Esta investigación examina cómo evolucionó esa diferencia entre 2004 y 2025. Para hacerlo, compara los resultados de la población urbana y rural a partir de la Encuesta Nacional de Hogares (ENAHO) del Instituto Nacional de Estadística e Informática (INEI).</p>
+<p>La pregunta central no es solamente si el país avanzó, sino si ese avance llegó con la misma intensidad a todos los territorios. Los datos muestran mejoras en ambos espacios, aunque también revelan que las distancias en los niveles educativos más altos siguen siendo importantes.</p>
+<p>El análisis combina dos enfoques: uno descriptivo, para medir cuánto cambió la brecha entre 2004 y 2025, y uno predictivo, para ver qué características de una persona ayudan a anticipar si terminó la secundaria. Se eligió un árbol de decisión porque es interpretable: permite ver qué variables pesan más sin convertirse en una caja negra.</p>
+</section>
+<section id="datos">
+<h2>La historia empieza en los datos</h2>
+<p>Para seguir la evolución de la brecha no basta con observar un solo año. La investigación reúne información de la Encuesta Nacional de Hogares (ENAHO), elaborada por el INEI, y utiliza el módulo 300, dedicado a educación, para construir una mirada de largo plazo entre 2004 y 2025.</p>
+<p>Antes de comparar los resultados, los registros se organizaron por año y área de residencia —urbana o rural— y se aplicaron los factores de expansión de la encuesta. Así, los indicadores describen estimaciones para la población y no únicamente el número de personas entrevistadas.</p>
+<p>La comparación también exige cautela: 2020 fue un año atípico por la aplicación de una encuesta telefónica durante la pandemia. Además, 2026 no forma parte de la serie porque los dos trimestres disponibles no se consideran comparables con el periodo completo.</p>
+<p>Esa decisión nació de un hallazgo en la primera exploración: entre 2025 y 2026, el porcentaje de adultos con secundaria completa o más saltaba de 58,7% a cerca de 67%. Al revisarlo, el salto no era educativo, sino un efecto de la ponderación de la encuesta: la edad promedio ponderada de la muestra bajaba de 50,5 a 47,0 años. Por eso 2026 quedó fuera de la serie.</p>
+</section>
+<section id="cifras">
+<h2>La distancia en una cifra</h2>
+<p>En 2025, el 66,2% de las personas de 25 años o más del área urbana había alcanzado la secundaria completa o un nivel superior. En el área rural, la proporción era de 24,9%. La diferencia entre ambos resultados supera los cuarenta puntos porcentuales.</p>
+<div class="stats">
+<div class="stat"><div class="num" style="color:var(--blue)">66,2%</div><div><b>Área urbana</b></div><div class="label">Secundaria completa o más · población de 25 años o más</div><small>2025</small></div>
+<div class="stat rural"><div class="num" style="color:var(--orange)">24,9%</div><div><b>Área rural</b></div><div class="label">Secundaria completa o más · población de 25 años o más</div><small>2025</small></div>
+</div>
+<div class="pullquote">El avance educativo existe, pero no ha eliminado la desigualdad entre la ciudad y el campo.</div>
+</section>
+<section id="evolucion">
+<h2>Dos décadas de avances, una distancia persistente</h2>
+<p>Entre 2004 y 2025, la proporción de adultos con secundaria completa o más aumentó tanto en el área urbana como en la rural. El crecimiento rural fue ligeramente mayor en puntos porcentuales: pasó de 14,2% a 24,9%, mientras que el urbano pasó de 57,0% a 66,2%.</p>
+<p>Sin embargo, crecer más rápido no significa haber alcanzado el mismo nivel. En este indicador, la brecha pasó de 42,8 a 41,3 puntos porcentuales: una reducción pequeña frente a los cambios observados durante más de dos décadas.</p>
+<h3>El acceso mejora, pero los logros no avanzan al mismo ritmo</h3>
+<p>La matrícula de adolescentes de 12 a 16 años muestra una reducción más marcada de la diferencia territorial: la brecha pasó de 12,5 puntos porcentuales en 2004 a 4,7 en 2025. En cambio, el acceso a estudios universitarios no siguió la misma trayectoria: la brecha aumentó de 14,5 a 16,1 puntos.</p>
+</section>
+<section id="territorio">
+<h2>El territorio también determina las oportunidades</h2>
+<p>La desigualdad no se distribuye de manera uniforme. En el análisis departamental de 2023–2025, las mayores brechas de secundaria completa o más se identificaron en La Libertad (40,2 puntos porcentuales) y Cajamarca (39,2). Entre las menores aparecen Madre de Dios (14,1), Tumbes (16,1) e Ica (16,9).</p>
+<p>Una brecha pequeña no siempre significa que la situación educativa sea favorable: puede ocurrir que los resultados sean bajos tanto en el área urbana como en la rural. Por eso, comparar la distancia entre áreas debe complementarse con la observación de los niveles alcanzados por cada una.</p>
+</section>
+<section id="desigualdades">
+<h2>La desigualdad tiene más de una dimensión</h2>
+<h3>La brecha también atraviesa el género</h3>
+<p>En el área rural, el porcentaje de mujeres de 25 años o más con secundaria completa o más pasó de 9,8% en 2004 a 18,9% en 2025. Entre los hombres rurales, aumentó de 18,6% a 31,8%. La distancia entre hombres y mujeres rurales se amplió de 8,8 a 12,9 puntos porcentuales.</p>
+<h3>La lengua materna importa</h3>
+<p>En 2025, el 20,3% de las personas rurales hablantes de una lengua originaria había alcanzado secundaria completa o más, frente al 29,1% de quienes tenían el castellano como lengua materna. En el área urbana, los porcentajes fueron 39,9% y 71,5%, respectivamente.</p>
+<p>Estos resultados describen diferencias observadas en la encuesta. Por sí solos, no permiten afirmar que una característica cause otra: muestran que las desigualdades territoriales se superponen con otras dimensiones sociales.</p>
+</section>
+<section id="graficos-originales"><h2>¿Cuánto ha cambiado la brecha educativa en el Perú? Descúbrelo en los datos</h2><div class="prediction-divider" id="analisis-descriptivo">
+  <h2>Ocho miradas a la desigualdad educativa</h2>
+  <p>Ocho visualizaciones describen la evolución de los indicadores, las diferencias entre áreas y cómo cambian según generaciones, departamentos, sexo y lengua materna.</p>
+</div>
+<div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Evolución urbano vs rural, 2004–2025</div><div class="chart-sub">Compara los seis indicadores educativos y permite cambiar de indicador.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_01.html" style="width:100%;height:650px;border:0;display:block" title="Evolución urbano vs rural, 2004–2025"></iframe><p class="chart-note">Aunque los indicadores mejoraron entre 2004 y 2025, la población rural continúa mostrando rezagos importantes frente a la urbana.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">¿La brecha se cerró?</div><div class="chart-sub">Diferencia urbano menos rural para cada indicador; conserva el menú desplegable y los valores originales.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_02.html" style="width:100%;height:650px;border:0;display:block" title="¿La brecha se cerró?"></iframe><p class="chart-note">La brecha se redujo en matrícula y analfabetismo, pero sigue siendo amplia en la culminación de secundaria y aumentó en estudios universitarios.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Nivel educativo alcanzado</div><div class="chart-sub">Distribución del nivel educativo de la población de 25 años o más, con animación por año.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_03.html" style="width:100%;height:650px;border:0;display:block" title="Nivel educativo alcanzado"></iframe><p class="chart-note">En el área rural, la población se concentra principalmente en primaria o niveles inferiores; la proporción que culminó secundaria sigue siendo menor.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">La brecha por generaciones</div><div class="chart-sub">Compara la secundaria completa o más entre grupos de edad y áreas.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_04.html" style="width:100%;height:650px;border:0;display:block" title="La brecha por generaciones"></iframe><p class="chart-note">Las generaciones rurales más jóvenes alcanzan mayores niveles educativos que las mayores, aunque todavía existe una diferencia considerable frente a sus pares urbanos.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Brecha por departamento</div><div class="chart-sub">Compara los resultados urbanos y rurales por departamento para 2023–2025.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_05.html" style="width:100%;height:650px;border:0;display:block" title="Brecha por departamento"></iframe><p class="chart-note">La magnitud de la brecha cambia entre departamentos: algunos presentan grandes diferencias y otros brechas menores, que deben leerse junto con sus niveles educativos.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Doble brecha: área y sexo</div><div class="chart-sub">Evolución de secundaria completa o más por área y sexo.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_06.html" style="width:100%;height:650px;border:0;display:block" title="Doble brecha: área y sexo"></iframe><p class="chart-note">Las diferencias educativas también varían según el sexo; en el área rural, los hombres presentan porcentajes mayores de secundaria completa que las mujeres.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Lengua materna y educación</div><div class="chart-sub">Compara castellano y lengua originaria en áreas urbana y rural.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_07.html" style="width:100%;height:650px;border:0;display:block" title="Lengua materna y educación"></iframe><p class="chart-note">La lengua materna se relaciona con diferencias en el logro educativo, tanto en el área urbana como en la rural; estos resultados no implican causalidad.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Educación y ruralidad por departamento</div><div class="chart-sub">Gráfico de burbujas animado por año, con región y tamaño poblacional.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_08.html" style="width:100%;height:650px;border:0;display:block" title="Educación y ruralidad por departamento"></iframe><p class="chart-note">Los departamentos con mayor proporción de población rural tienden a registrar menores porcentajes de adultos con secundaria completa o más.</p></div>
+</section><section id="modelo">
+<h2>Cómo funciona el modelo predictivo</h2>
+<p>La investigación incorpora un árbol de decisión construido con registros de la ENAHO de 2023–2025 correspondientes a personas de 25 años o más. El modelo utiliza área de residencia, sexo, lengua materna, departamento y edad para estimar si una persona alcanzó secundaria completa o un nivel educativo superior.</p>
+<p>Antes de entrenarlo, se unieron 22 años de ENAHO en una sola tabla (más de 2,2 millones de registros), se limitó el análisis a personas de 25 años o más —edad en que la mayoría ya terminó de estudiar—, se descartaron los registros sin nivel educativo y se creó la variable «terminó secundaria» (sí/no). Área, sexo, lengua materna y departamento se convirtieron en columnas de 0 y 1 para que el modelo pudiera leerlas.</p>
+<p>En la evaluación reportada, el modelo obtuvo una exactitud de 73,6%, frente a 58,2% de una línea base que siempre predice la clase mayoritaria. La exactitud balanceada fue de 72,6%.</p>
+<div class="stats">
+<div class="stat"><div class="num" style="color:var(--green)">73,6%</div><div><b>Exactitud del modelo</b></div><div class="label">Resultado en el conjunto de prueba</div></div>
+<div class="stat"><div class="num">58,2%</div><div><b>Línea base</b></div><div class="label">Predicción de la clase mayoritaria</div></div>
+</div>
+<p>En términos simples: de cada 100 adultos, el modelo clasifica bien a unos 74, frente a 58 si siempre dijera «terminó». Detecta a 2 de cada 3 personas que no terminaron (67%) y a casi 4 de cada 5 que sí terminaron (78%). Aun así, 1 de cada 3 de quienes no terminaron pasa desapercibida: el contexto orienta, pero no lo explica todo.</p>
+<p>Área de residencia y edad fueron las variables con mayor importancia dentro del árbol, con 37,1% y 37,0%, respectivamente. La importancia de una variable dentro del modelo no equivale a demostrar causalidad.</p>
+</section>
+<section id="graficos-modelo"><div class="prediction-divider" id="modelo-predictivo">
+  <h2>Factores que ayudan a anticipar el logro educativo</h2>
+  <p>Se utiliza un árbol de decisión con área de residencia, sexo, lengua materna, departamento y edad. Las dos visualizaciones siguientes muestran cómo se comporta el modelo: sus aciertos y errores, y la importancia relativa de cada variable.</p>
+</div>
+<div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Matriz de confusión</div><div class="chart-sub">Evalúa los aciertos y errores del árbol de decisión.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_09.html" style="width:100%;height:650px;border:0;display:block" title="Matriz de confusión"></iframe><p class="chart-note">El modelo identifica correctamente una parte importante de los casos, aunque comete más errores al reconocer a quienes no culminaron secundaria.</p></div><div class="chart-card" style="margin:30px 0;padding:18px;border:1px solid #e6e3da;background:#fff"><div class="chart-title">Importancia de variables</div><div class="chart-sub">Muestra el peso relativo de las variables en el árbol de decisión.</div><iframe allowfullscreen="" loading="lazy" src="graficos/grafico_10.html" style="width:100%;height:650px;border:0;display:block" title="Importancia de variables"></iframe><p class="chart-note">El área de residencia y la edad tienen mayor importancia predictiva en el árbol de decisión; esto no significa que sean causas del resultado educativo.</p></div></section>
+<section id="conclusion">
+<h2>Del hallazgo a las decisiones</h2>
+<p>Los resultados permiten reconocer avances en educación durante el periodo estudiado. La matrícula adolescente se acercó entre áreas y las generaciones rurales más jóvenes alcanzaron niveles educativos superiores a los de las generaciones mayores.</p>
+<p>Pero la distancia en la culminación de la secundaria continúa siendo amplia y el acceso a estudios universitarios muestra una brecha que incluso se incrementó. Además, el territorio se combina con diferencias por sexo y lengua materna.</p>
+<p>La conclusión principal es que el progreso educativo del Perú no puede evaluarse únicamente por el promedio nacional. También es necesario observar quiénes avanzan, dónde viven y qué desigualdades siguen condicionando sus oportunidades.</p>
+<h3>De los resultados a la acción</h3>
+<p>Estos hallazgos pueden servir como punto de partida para orientar preguntas de política educativa: dónde persisten los mayores rezagos, qué grupos requieren atención diferenciada y cómo seguir la evolución de los indicadores. El análisis no evalúa la eficacia de una intervención concreta, pero ayuda a identificar brechas que merecen ser examinadas.</p>
+<h3>Lo que todavía falta investigar</h3>
+<p>La ENAHO permite describir asociaciones y diferencias poblacionales, pero este análisis no demuestra causas. Una siguiente etapa podría profundizar en los factores familiares, económicos, de infraestructura y de oferta educativa, así como evaluar intervenciones específicas con diseños adecuados.</p>
+<p>Para usar el modelo en la práctica, por ejemplo para priorizar territorios, faltarían variables que hoy no están: ingreso del hogar, distancia al colegio y calidad de la oferta educativa. Con solo cinco variables, el modelo se equivoca en 1 de cada 4 casos.</p>
+</section>
+<section id="metodologia">
+<h2>Cómo se realizó el análisis</h2>
+<div class="method">
+<p><b>Fuente:</b> INEI, Encuesta Nacional de Hogares (ENAHO), módulo 300 de Educación.</p>
+<p><b>Periodo:</b> 2004–2025. El código excluye 2026 porque sus dos trimestres disponibles no se consideran comparables para esta serie.</p>
+<p><b>Clasificación territorial:</b> urbano y rural según los estratos de la ENAHO: estratos 1–5 como urbano y los restantes como rural.</p>
+<p><b>Ponderación:</b> factor de expansión de la encuesta (FACTOR07).</p>
+<p><b>Brecha:</b> valor urbano menos valor rural, expresado en puntos porcentuales o años según el indicador.</p>
+<p><b>Modelo:</b> árbol de decisión de profundidad máxima 6, con datos 2023–2025, división 70% entrenamiento y 30% prueba.</p>
+<p><b>Precaución:</b> el año 2020 corresponde a una encuesta telefónica por la COVID-19; sus resultados deben interpretarse con cautela.</p>
+</div>
+</section>
+</article>
+</div>
+<footer><div class="foot-inner"><div><p>Un artículo de análisis de datos sobre las desigualdades educativas en el Perú.</p></div><div>Fuente principal: INEI · ENAHO<br/>Periodo: 2004–2025</div></div></footer>
+</body>
+</html>

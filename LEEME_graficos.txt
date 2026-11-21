@@ -1,0 +1,23 @@
+INTEGRACIÓN DE LOS 10 GRÁFICOS ORIGINALES
+
+1. Abre brecha_educativa_exportar_graficos.py en Google Colab.
+2. Ejecuta el notebook en orden y permite que termine el procesamiento ENAHO.
+3. El script exportará los diez objetos Plotly originales a:
+   /content/graficos_brecha_educativa/
+4. Descarga esa carpeta desde Colab (puedes comprimirla primero).
+5. En tu computadora, coloca la carpeta descargada y articulo_brecha_educativa.html
+   en la misma ubicación, y renombra la carpeta a: graficos
+6. Abre articulo_brecha_educativa.html en el navegador.
+
+IMPORTANTE:
+- No se alteró la construcción de los gráficos: se sustituyeron únicamente
+  las llamadas fig.show() por exportaciones HTML del mismo objeto Plotly.
+- Los diez gráficos se generan con tus bases ENAHO en Google Colab; no es posible
+  incluir resultados reales en este paquete sin ejecutar allí el procesamiento.
+- Los gráficos usan Plotly CDN, por lo que requieren conexión a Internet.
+
+ACTUALIZACIÓN: el artículo ahora incluye debajo de cada uno de los diez gráficos una sección 'Cómo leer este gráfico', 'Qué muestran los datos' y una conclusión basada en los análisis del notebook original.
+
+
+IMAGEN DE PORTADA
+Mantén el archivo portada_brecha_educativa.png en la misma carpeta que articulo_brecha_educativa.html. El HTML lo utiliza como fotografía de portada.
