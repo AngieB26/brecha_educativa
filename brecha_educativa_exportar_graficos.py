@@ -77,7 +77,8 @@ drive.mount('/content/drive')
 import os, numpy as np, pandas as pd, plotly.express as px, plotly.graph_objects as go
 
 # EXPORTACIÓN DE LOS GRÁFICOS ORIGINALES (sin alterar sus datos, trazas ni diseño)
-OUT_CHARTS = '/content/graficos_brecha_educativa'
+# La carpeta queda junto al HTML para que sus rutas relativas funcionen al desplegar.
+OUT_CHARTS = os.path.join(os.getcwd(), 'graficos')
 os.makedirs(OUT_CHARTS, exist_ok=True)
 
 
